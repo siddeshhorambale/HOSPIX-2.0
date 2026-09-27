@@ -1,0 +1,626 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary-navy: #082D46;
+  --color-deep-navy: #052338;
+  --color-warm-cream: #F7F4E9;
+  --color-light-cream: #FCFAF3;
+  --color-surface-white: #FFFFFF;
+  --color-soft-blue: #E8F2F6;
+  --color-light-blue: #EEF5F7;
+  --color-warm-yellow: #F4D98A;
+  --color-soft-yellow: #FFF2C7;
+  --color-soft-green: #E7F4EA;
+  --color-brand-green: #2F7D4A;
+  --color-soft-red: #FBEAEA;
+  --color-text-primary: #092C43;
+  --color-text-secondary: #596B76;
+  --color-text-muted: #8A979D;
+  --color-border-warm: #D9D8CF;
+  --color-border-light: #E7E5DC;
+
+  /* Aliases for backwards compatibility */
+  --color-primary: #082D46;
+  --color-primary-accent: #114B70;
+  --color-bg-warm: #F7F4E9;
+  --color-bg-highlight: #FFF2C7;
+  --color-card: #FFFFFF;
+  --color-text-main: #092C43;
+
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Centralized Motion Tokens */
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --duration-fast: 140ms;
+  --duration-normal: 220ms;
+  --duration-medium: 320ms;
+  --duration-slow: 500ms;
+  --duration-hero: 800ms;
+
+  /* Depth & Soft Navy Shadows */
+  --shadow-xs: 0 1px 2px rgba(8, 45, 70, 0.04);
+  --shadow-sm: 0 2px 6px rgba(8, 45, 70, 0.05), 0 1px 2px rgba(8, 45, 70, 0.03);
+  --shadow-md: 0 6px 18px -2px rgba(8, 45, 70, 0.09), 0 3px 6px -2px rgba(8, 45, 70, 0.04);
+  --shadow-lg: 0 14px 34px -4px rgba(8, 45, 70, 0.13), 0 6px 14px -3px rgba(8, 45, 70, 0.06);
+  --shadow-xl: 0 24px 48px -10px rgba(8, 45, 70, 0.20);
+}
+
+:root {
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --duration-fast: 140ms;
+  --duration-normal: 220ms;
+  --duration-medium: 320ms;
+  --duration-slow: 500ms;
+  --duration-hero: 800ms;
+
+  --shadow-xs: 0 1px 2px rgba(8, 45, 70, 0.04);
+  --shadow-sm: 0 2px 6px rgba(8, 45, 70, 0.05), 0 1px 2px rgba(8, 45, 70, 0.03);
+  --shadow-md: 0 6px 18px -2px rgba(8, 45, 70, 0.09), 0 3px 6px -2px rgba(8, 45, 70, 0.04);
+  --shadow-lg: 0 14px 34px -4px rgba(8, 45, 70, 0.13), 0 6px 14px -3px rgba(8, 45, 70, 0.06);
+  --shadow-xl: 0 24px 48px -10px rgba(8, 45, 70, 0.20);
+}
+
+@layer base {
+  body {
+    background-color: #F7F4E9;
+    color: #092C43;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.01em;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+    color: #092C43;
+  }
+}
+
+/* ============================================================
+   Keyframe Animations
+============================================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modalEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulseOnce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* HOSPIX Brand Intro Animations */
+@keyframes logoEmblemIntro {
+  0% {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes logoTextIntro {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes logoSubtextIntro {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes introLineExpand {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(200%) rotate(45deg);
+  }
+}
+
+/* Signature HOSPIX Moment: Resource Convergence */
+@keyframes signatureConvergeLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-24px) scale(0.9);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(4px) scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes signatureConvergeRight {
+  0% {
+    opacity: 0;
+    transform: translateX(24px) scale(0.9);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-4px) scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes signatureConvergeCenter {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes subtlePulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(244, 217, 138, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(244, 217, 138, 0);
+  }
+}
+
+/* Brand Intro Classes */
+.hospix-logo-emblem {
+  animation: logoEmblemIntro 400ms var(--ease-emphasized) forwards;
+}
+
+.hospix-logo-text {
+  animation: logoTextIntro 450ms 220ms var(--ease-emphasized) both;
+}
+
+.hospix-logo-subtext {
+  animation: logoSubtextIntro 400ms 380ms var(--ease-smooth) both;
+}
+
+.hospix-intro-line {
+  animation: introLineExpand 750ms 350ms var(--ease-emphasized) forwards;
+}
+
+.hospix-shimmer-sweep {
+  animation: shimmerSweep 1.8s infinite ease-in-out;
+}
+
+/* Page View Transition Classes */
+.hospix-page-enter {
+  animation: fadeInUp var(--duration-normal) var(--ease-emphasized) both;
+}
+
+/* Animation utilities */
+.animate-fade-in {
+  animation: fadeIn var(--duration-normal) var(--ease-out) forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp var(--duration-normal) var(--ease-emphasized) both;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown var(--duration-fast) var(--ease-out) both;
+}
+
+.animate-modal-enter {
+  animation: modalEnter var(--duration-normal) var(--ease-emphasized) forwards;
+}
+
+/* Stagger Utilities */
+.stagger-1 { animation-delay: 40ms; }
+.stagger-2 { animation-delay: 80ms; }
+.stagger-3 { animation-delay: 120ms; }
+.stagger-4 { animation-delay: 160ms; }
+.stagger-5 { animation-delay: 200ms; }
+.stagger-6 { animation-delay: 240ms; }
+
+/* ============================================================
+   Interactive Button System
+============================================================ */
+.hospix-btn-primary {
+  background-color: #082D46;
+  color: #FFFFFF;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  box-shadow: var(--shadow-xs);
+  transition: transform var(--duration-fast) var(--ease-out),
+              background-color var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+.hospix-btn-primary:hover:not(:disabled) {
+  background-color: #052338;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+.hospix-btn-primary:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+  box-shadow: var(--shadow-xs);
+}
+.hospix-btn-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #F7F4E9, 0 0 0 4px #082D46;
+}
+.hospix-btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.hospix-btn-secondary {
+  background-color: #FFFFFF;
+  color: #082D46;
+  border: 1px solid #D9D8CF;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  box-shadow: var(--shadow-xs);
+  transition: transform var(--duration-fast) var(--ease-out),
+              background-color var(--duration-fast) var(--ease-out),
+              border-color var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+.hospix-btn-secondary:hover:not(:disabled) {
+  background-color: #E8F2F6;
+  border-color: #082D46;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+.hospix-btn-secondary:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+.hospix-btn-secondary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #F7F4E9, 0 0 0 4px #082D46;
+}
+.hospix-btn-secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Icon button tactile feedback */
+.hospix-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 9999px;
+  color: #596B76;
+  background-color: transparent;
+  transition: transform var(--duration-fast) var(--ease-out),
+              background-color var(--duration-fast) var(--ease-out),
+              color var(--duration-fast) var(--ease-out);
+  cursor: pointer;
+}
+.hospix-icon-btn:hover {
+  background-color: #E8F2F6;
+  color: #082D46;
+  transform: scale(1.05);
+}
+.hospix-icon-btn:active {
+  transform: scale(0.94);
+}
+
+/* Subtle Arrow Motion on CTA Buttons */
+.hospix-arrow {
+  transition: transform var(--duration-fast) var(--ease-out);
+  display: inline-block;
+}
+.hospix-btn-primary:hover .hospix-arrow,
+.hospix-btn-secondary:hover .hospix-arrow,
+.group:hover .hospix-arrow {
+  transform: translateX(3px);
+}
+
+/* ============================================================
+   Card Depth System
+============================================================ */
+.hospix-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E7E5DC;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--duration-normal) var(--ease-out),
+              box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.hospix-card-hover {
+  background-color: #FFFFFF;
+  border: 1px solid #E7E5DC;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--duration-normal) var(--ease-emphasized),
+              border-color var(--duration-normal) var(--ease-out),
+              box-shadow var(--duration-normal) var(--ease-emphasized);
+}
+.hospix-card-hover:hover {
+  border-color: #CFCBC0;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+.hospix-card-hover:active {
+  transform: translateY(-1px) scale(0.998);
+}
+
+/* Resource Card with Tactile Image Zoom */
+.hospix-resource-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E7E5DC;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--duration-normal) var(--ease-emphasized),
+              border-color var(--duration-normal) var(--ease-out),
+              box-shadow var(--duration-normal) var(--ease-emphasized);
+}
+.hospix-resource-card:hover {
+  border-color: #CFCBC0;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+.hospix-resource-card:active {
+  transform: translateY(-1px) scale(0.998);
+}
+
+.hospix-img-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.hospix-resource-img {
+  transition: transform var(--duration-slow) var(--ease-emphasized);
+  transform-origin: center center;
+  will-change: transform;
+}
+.hospix-resource-card:hover .hospix-resource-img,
+.group:hover .hospix-resource-img {
+  transform: scale(1.03);
+}
+
+/* Stat card subtle hover */
+.hospix-stat-card {
+  background-color: #FFFDF6;
+  border: 1px solid #E7E5DC;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-xs);
+  transition: transform var(--duration-fast) var(--ease-out),
+              border-color var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out);
+}
+.hospix-stat-card:hover {
+  transform: translateY(-2px);
+  border-color: #D9D8CF;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ============================================================
+   Inputs & Form Controls
+============================================================ */
+.hospix-input {
+  background-color: #FFFFFF;
+  border: 1px solid #D9D8CF;
+  border-radius: 0.75rem;
+  color: #092C43;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.875rem;
+  transition: border-color var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out),
+              background-color var(--duration-fast) var(--ease-out);
+  width: 100%;
+}
+.hospix-input:hover {
+  border-color: #8A979D;
+}
+.hospix-input:focus {
+  outline: none;
+  border-color: #082D46;
+  box-shadow: 0 0 0 3px rgba(8, 45, 70, 0.12);
+}
+
+/* ============================================================
+   Filter Chips & Tab Indicators
+============================================================ */
+.hospix-chip {
+  transition: transform var(--duration-fast) var(--ease-out),
+              background-color var(--duration-fast) var(--ease-out),
+              border-color var(--duration-fast) var(--ease-out),
+              color var(--duration-fast) var(--ease-out);
+  cursor: pointer;
+  user-select: none;
+}
+.hospix-chip:hover {
+  transform: translateY(-1px);
+}
+.hospix-chip:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ============================================================
+   Modal Depth & Backdrop
+============================================================ */
+.hospix-modal-backdrop {
+  background-color: rgba(5, 35, 56, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: fadeIn var(--duration-fast) var(--ease-out) forwards;
+}
+
+.hospix-modal-dialog {
+  animation: modalEnter var(--duration-normal) var(--ease-emphasized) forwards;
+  box-shadow: var(--shadow-xl);
+}
+
+/* ============================================================
+   Polished Skeleton Shimmer State
+============================================================ */
+.hospix-skeleton {
+  background: linear-gradient(
+    90deg,
+    #EFECE1 0%,
+    #F8F6ED 50%,
+    #EFECE1 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite ease-in-out;
+  border-radius: 0.5rem;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F7F4E9;
+}
+::-webkit-scrollbar-thumb {
+  background: #D9D8CF;
+  border-radius: 3px;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8A979D;
+}
+
+/* ============================================================
+   Accessibility: Reduced Motion
+============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hospix-resource-card:hover .hospix-resource-img,
+  .group:hover .hospix-resource-img,
+  .hospix-card-hover:hover,
+  .hospix-btn-primary:hover,
+  .hospix-btn-primary:active,
+  .hospix-btn-secondary:hover,
+  .hospix-btn-secondary:active,
+  .hospix-icon-btn:hover,
+  .hospix-icon-btn:active,
+  .hospix-chip:hover,
+  .hospix-chip:active,
+  .hospix-stat-card:hover,
+  .hospix-arrow {
+    transform: none !important;
+  }
+
+  .hospix-skeleton {
+    animation: none !important;
+    background: #EFECE1 !important;
+  }
+}
+
